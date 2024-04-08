@@ -7,7 +7,7 @@
 import trl
 # from trl.train import SFTTrainer, TrainingArguments
 import pandas as pd
-import os
+
 from datasets import load_dataset, Dataset, load_metric
 import pandas as pd
 import evaluate
@@ -26,9 +26,11 @@ from transformers import (
 from copy import deepcopy
 import csv
 
+# SET DIRECTORY
+import os
 os.getcwd()
-
 os.chdir('./DeepLearning/Temporal')
+
 #endregion
 #region # LOAD DATA
 # =============================================================================
@@ -101,6 +103,43 @@ def cqa_tokenize_function(batch):
 
 tokenized_train = train.map(cqa_tokenize_function, batched=True)
 tokenized_train = tokenized_train.remove_columns(['CQ'])
+
+
+#endregion
+#region # FOLLOW ALONG WITH WEBSITE
+# =============================================================================
+# FOLLOW ALONG WITH WEBSITE
+# =============================================================================
+import trl
+# from trl.train import SFTTrainer, TrainingArguments
+
+
+os.environ["WANDB_PROJECT"] = "alpaca_ft"  # name your W&B project
+os.environ["WANDB_LOG_MODEL"] = "checkpoint"  # log all model checkpoints
+
+
+training_args = TrainingArguments(
+    report_to="wandb", # enables logging to W&B 😎
+    per_device_train_batch_size=16,
+    learning_rate=2e-4,
+    lr_scheduler_type="cosine",
+    num_train_epochs=3,
+    gradient_accumulation_steps=2, # simulate larger batch sizes
+)
+
+
+trainer = SFTTrainer(
+    model,
+    train_dataset=train_dataset,
+    eval_dataset=eval_dataset,
+    packing=True, # pack samples together for efficient training
+    max_seq_length=1024, # maximum packed length 
+    args=training_args,
+    formatting_func=formatting_func, # format samples with a model schema
+)
+trainer.train()
+
+
 
 # tokenized_dev = dev.map(cqa_tokenize_function, batched=True)
 # tokenized_dev = tokenized_dev.remove_columns(['CQ'])
