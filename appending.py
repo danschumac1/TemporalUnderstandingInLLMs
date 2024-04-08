@@ -5,6 +5,8 @@ import openai
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+os.getcwd()
+os.chdir('./TemporalUnderstandingInLLMs')
 import json
 from functions.homebrew import extract_output_values_from_json_file
 # os.chdir('./DeepLearning/Temporal')
