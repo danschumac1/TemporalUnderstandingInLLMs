@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+  File "/home/dan/miniconda3/envs/danEnv/lib/python3.11/site-packages/wandb/sdk/artifacts/artifact.py", line 1167, in add_file
+    raise ValueError("Path is not a file: %s" % local_path)
+ValueError: Path is not a file: ./data/alpaca_data.json

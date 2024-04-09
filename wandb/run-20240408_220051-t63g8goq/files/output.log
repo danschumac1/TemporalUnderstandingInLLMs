@@ -1,0 +1,5 @@
+
+ArtifactManifestEntry(path='TQ_revised.json', digest='Rs6ZLpouKv0yGvTX+GFFJg==', size=613547, local_path='/home/dan/.local/share/wandb/artifacts/staging/tmpj2yxq2hc', skip_cache=False)
+Traceback (most recent call last):
+  File "<stdin>", line 10, in <module>
+KeyError: 0

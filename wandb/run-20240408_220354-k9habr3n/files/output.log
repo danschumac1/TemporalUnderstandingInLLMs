@@ -1,0 +1,5 @@
+
+ArtifactManifestEntry(path='TQ_revised.json', digest='Rs6ZLpouKv0yGvTX+GFFJg==', size=613547, local_path='/home/dan/.local/share/wandb/artifacts/staging/tmpzotl6e3b', skip_cache=False)
+Traceback (most recent call last):
+  File "<stdin>", line 13, in <module>
+AttributeError: 'str' object has no attribute 'values'

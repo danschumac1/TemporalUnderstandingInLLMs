@@ -1,0 +1,5 @@
+
+ArtifactManifestEntry(path='TQ_revised.json', digest='Rs6ZLpouKv0yGvTX+GFFJg==', size=613547, local_path='/home/dan/.local/share/wandb/artifacts/staging/tmpenjpaxt5', skip_cache=False)
+Traceback (most recent call last):
+  File "<stdin>", line 9, in <module>
+NameError: name 'data_dict' is not defined
